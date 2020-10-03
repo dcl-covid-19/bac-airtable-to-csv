@@ -121,6 +121,7 @@ def hardcoded_record(transformed_record):
     hardcoded_record["native_american"] = "Native American" in transformed_record["details"]
     hardcoded_record["seniors"] = "Seniors" in transformed_record["details"]
     hardcoded_record["accepts_medical"] = "Accepts MediCal" in transformed_record["details"]
+    hardcoded_record["discount_medical"] = "Accepts MediCal" in transformed_record["details"]
     hardcoded_record["must_show_id"] = "Must show ID" in transformed_record["details"]
 
     # else
@@ -138,13 +139,28 @@ def hardcoded_record(transformed_record):
     hardcoded_record["telelegal"] = "Telelegal" in transformed_record["service_options"]
     hardcoded_record["call_in_advance"] = "Call in advance" in transformed_record["application_process"]
     hardcoded_record["must_show_id"] = "Must show ID" in transformed_record["application_process"]
-    hardcoded_record["mon"] = "%s - %s".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Monday" in transformed_record["weekday"] else ""
-    hardcoded_record["tues"] = "%s - %s".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Tuesday" in transformed_record["weekday"] else ""
-    hardcoded_record["wed"] = "%s - %s".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Wednesday" in transformed_record["weekday"] else ""
-    hardcoded_record["thr"] = "%s - %s".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Thursday" in transformed_record["weekday"] else ""
-    hardcoded_record["fri"] = "%s - %s".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Friday" in transformed_record["weekday"] else ""
-    hardcoded_record["sat"] = "%s - %s".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Saturday" in transformed_record["weekday"] else ""
-    hardcoded_record["sun"] = "%s - %s".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Sunday" in transformed_record["weekday"] else ""
+    hardcoded_record["alameda"] = "Alameda" in transformed_record["service_area"]
+    hardcoded_record["san_francisco"] = "San Francisco" in transformed_record["service_area"]
+    hardcoded_record["contra_costa"] = "Contra Costa" in transformed_record["service_area"]
+    hardcoded_record["santa_clara"] = "Santa Clara" in transformed_record["service_area"]
+    hardcoded_record["san_mateo"] = "San Mateo" in transformed_record["service_area"]
+    hardcoded_record["solano"] = "Solano" in transformed_record["service_area"]
+    hardcoded_record["sonoma"] = "Sonoma" in transformed_record["service_area"]
+    hardcoded_record["napa"] = "Napa" in transformed_record["service_area"]
+    hardcoded_record["santa_cruz"] = "Santa Cruz" in transformed_record["service_area"]
+    hardcoded_record["san_benito"] = "San Benito" in transformed_record["service_area"]
+    hardcoded_record["sacramento"] = "Sacramento" in transformed_record["service_area"]
+    hardcoded_record["farmers_market"] = transformed_record["taxonomy"] == "Farmer's Market"
+    hardcoded_record["meal_student"] = transformed_record["taxonomy"] == "School Meals"
+    hardcoded_record["free_groceries"] = transformed_record["taxonomy"] == "Groceries" and "Free" in transformed_record["payment_options"]
+    hardcoded_record["bob"] = transformed_record["taxonomy"] == "Black-owned Restaurant"
+    hardcoded_record["mon"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Monday" in transformed_record["weekday"] else ""
+    hardcoded_record["tues"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Tuesday" in transformed_record["weekday"] else ""
+    hardcoded_record["wed"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Wednesday" in transformed_record["weekday"] else ""
+    hardcoded_record["thr"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Thursday" in transformed_record["weekday"] else ""
+    hardcoded_record["fri"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Friday" in transformed_record["weekday"] else ""
+    hardcoded_record["sat"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Saturday" in transformed_record["weekday"] else ""
+    hardcoded_record["sun"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Sunday" in transformed_record["weekday"] else ""
 
     # remove
     del hardcoded_record["taxonomy"]
@@ -161,6 +177,11 @@ def hardcoded_record(transformed_record):
     del hardcoded_record["foodstamp_area"]
     del hardcoded_record["service_area"]
     del hardcoded_record["application_process"]
+    del hardcoded_record["weekday"]
+    del hardcoded_record["opens_at"]
+    del hardcoded_record["closes_at"]
+    del hardcoded_record["add_day"]
+    del hardcoded_record["add_hours"]
 
     def to_int(x):
         return int(x == True) if type(x) == bool else x

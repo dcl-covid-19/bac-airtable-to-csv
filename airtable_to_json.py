@@ -11,7 +11,7 @@ TABLES = [
     #'contact',
     'phones',
     'address',
-    #'schedule',
+    'schedule',
     'service_area',
     'taxonomy',
     'details',
