@@ -161,6 +161,21 @@ def hardcoded_record(transformed_record):
     hardcoded_record["fri"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Friday" in transformed_record["weekday"] else ""
     hardcoded_record["sat"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Saturday" in transformed_record["weekday"] else ""
     hardcoded_record["sun"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Sunday" in transformed_record["weekday"] else ""
+    RESOURCE_DICT = {
+        "Black-owned Restaurant": "bob",
+        "Health": "health",
+        "Legal": "legal",
+        "Financial Assistance": "cash_assistance",
+        "Groceries": "grocery",
+        "Prepared Meals": "meal",
+        "Farmer's Market": "grocery",
+        "School Meals": "meal",
+        "Domestic Violence Resource": "dv_resources",
+        "": "",
+    }
+    hardcoded_record["resource"] = RESOURCE_DICT[transformed_record["taxonomy"]]
+    if transformed_record["taxonomy"] == "Health" and "Mental heath care" in transformed_record["med_area"]:
+        hardcoded_record["resource"] = "mental_health"
 
     # remove
     del hardcoded_record["taxonomy"]
