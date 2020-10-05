@@ -11,7 +11,7 @@
     "zip": "#address.Zip Code",
     "lat": "#locations.latitude",
     "lon": "#locations.longitude",
-    "last_updated": "Last updated",
+    "last_update": "Last updated",
     "updated_by": "Updated By",
 
     "taxonomy": "*taxonomy.name",

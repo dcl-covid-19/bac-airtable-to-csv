@@ -154,15 +154,31 @@ def hardcoded_record(transformed_record):
     hardcoded_record["meal_student"] = transformed_record["taxonomy"] == "School Meals"
     hardcoded_record["free_groceries"] = transformed_record["taxonomy"] == "Groceries" and "Free" in transformed_record["payment_options"]
     hardcoded_record["bob"] = transformed_record["taxonomy"] == "Black-owned Restaurant"
-    hardcoded_record["mon"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Monday" in transformed_record["weekday"] else ""
-    hardcoded_record["tues"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Tuesday" in transformed_record["weekday"] else ""
-    hardcoded_record["wed"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Wednesday" in transformed_record["weekday"] else ""
-    hardcoded_record["thr"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Thursday" in transformed_record["weekday"] else ""
-    hardcoded_record["fri"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Friday" in transformed_record["weekday"] else ""
-    hardcoded_record["sat"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Saturday" in transformed_record["weekday"] else ""
-    hardcoded_record["sun"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Sunday" in transformed_record["weekday"] else ""
+    if transformed_record["opens_at"] and transformed_record["closes_at"]:
+        hardcoded_record["mon"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Monday" in transformed_record["weekday"] else ""
+        hardcoded_record["tues"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Tuesday" in transformed_record["weekday"] else ""
+        hardcoded_record["wed"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Wednesday" in transformed_record["weekday"] else ""
+        hardcoded_record["thr"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Thursday" in transformed_record["weekday"] else ""
+        hardcoded_record["fri"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Friday" in transformed_record["weekday"] else ""
+        hardcoded_record["sat"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Saturday" in transformed_record["weekday"] else ""
+        hardcoded_record["sun"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Sunday" in transformed_record["weekday"] else ""
+    if transformed_record["add_hours"]:
+        if transformed_record["add_day"] == "Monday":
+            hardcoded_record["mon"] += (", " if hardcoded_record["mon"] else '') + transformed_record["add_hours"]
+        if transformed_record["add_day"] == "Tuesday":
+            hardcoded_record["tues"] += (", " if hardcoded_record["tues"] else '') + transformed_record["add_hours"]
+        if transformed_record["add_day"] == "Wednesday":
+            hardcoded_record["wed"] += (", " if hardcoded_record["wed"] else '') + transformed_record["add_hours"]
+        if transformed_record["add_day"] == "Thursday":
+            hardcoded_record["thr"] += (", " if hardcoded_record["thr"] else '') + transformed_record["add_hours"]
+        if transformed_record["add_day"] == "Friday":
+            hardcoded_record["fri"] += (", " if hardcoded_record["fri"] else '') + transformed_record["add_hours"]
+        if transformed_record["add_day"] == "Saturday":
+            hardcoded_record["sat"] += (", " if hardcoded_record["sat"] else '') + transformed_record["add_hours"]
+        if transformed_record["add_day"] == "Sunday":
+            hardcoded_record["sun"] += (", " if hardcoded_record["sun"] else '') + transformed_record["add_hours"]
     RESOURCE_DICT = {
-        "Black-owned Restaurant": "bob",
+        "Black-owned Restaurant": "restaurant",
         "Health": "health",
         "Legal": "legal",
         "Financial Assistance": "cash_assistance",
@@ -171,10 +187,9 @@ def hardcoded_record(transformed_record):
         "Farmer's Market": "grocery",
         "School Meals": "meal",
         "Domestic Violence Resource": "dv_resources",
-        "": "",
     }
-    hardcoded_record["resource"] = RESOURCE_DICT[transformed_record["taxonomy"]]
-    if transformed_record["taxonomy"] == "Health" and "Mental heath care" in transformed_record["med_area"]:
+    hardcoded_record["resource"] = RESOURCE_DICT.get(transformed_record["taxonomy"], '')
+    if transformed_record["taxonomy"] == "Health" and "Mental health care" in transformed_record["med_area"]:
         hardcoded_record["resource"] = "mental_health"
 
     # remove
