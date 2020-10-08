@@ -80,7 +80,7 @@ def hardcoded_record(transformed_record):
 
     # legal
     hardcoded_record["legal_housing"] = "Housing support" in transformed_record["legal_area"]
-    hardcoded_record["legal_worker_protection"] = "Workers’ rights support" in transformed_record["legal_area"]
+    hardcoded_record["legal_worker_protection"] = "Workers' rights support" in transformed_record["legal_area"]
     hardcoded_record["legal_healthcare"] = "Healthcare benefits support" in transformed_record["legal_area"]
     hardcoded_record["legal_immigration"] = "Immigration support" in transformed_record["legal_area"]
     hardcoded_record["legal_criminal"] = "Criminal justice support" in transformed_record["legal_area"]
