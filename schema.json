@@ -28,6 +28,7 @@
     "dv_area": "*dv_area",
     "foodstamp_area": "*foodstamp_area",
     "service_area": "*service_area.name",
+    "freefood_area": "*freefood_area.name",
     "application_process": "*application_process",
     "weekday": "*schedule.weekday",
     "opens_at": "schedule.opens_at",

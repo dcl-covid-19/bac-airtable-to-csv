@@ -123,11 +123,14 @@ def hardcoded_record(transformed_record):
     hardcoded_record["accepts_medical"] = "Accepts MediCal" in transformed_record["details"]
     hardcoded_record["discount_medical"] = "Accepts MediCal" in transformed_record["details"]
     hardcoded_record["must_show_id"] = "Must show ID" in transformed_record["details"]
+    hardcoded_record["all_children"] = "All Children" in transformed_record["details"]
+    hardcoded_record["enrolled_children"] = "Only Students Enrolled in District" in transformed_record["details"]
 
     # else
     hardcoded_record["free"] = "Free" in transformed_record["payment_options"]
     hardcoded_record["sliding_scale"] = "Sliding scale" in transformed_record["payment_options"]
     hardcoded_record["financial_assistance"] = "Financial assistance" in transformed_record["payment_options"]
+    hardcoded_record["require_child"] = "Child need be present" in transformed_record["freefood_area"]
     hardcoded_record["contact"] = transformed_record["number"]
     hardcoded_record["status"] = transformed_record["status"] == "Open"
     hardcoded_record["temp_closed"] = transformed_record["status"] == "Temporarily Closed"
@@ -137,6 +140,8 @@ def hardcoded_record(transformed_record):
     hardcoded_record["in_person"] = "In person" in transformed_record["service_options"]
     hardcoded_record["telehealth"] = "Telehealth" in transformed_record["service_options"]
     hardcoded_record["telelegal"] = "Telelegal" in transformed_record["service_options"]
+    hardcoded_record["ballot_outdoor"] = "Outdoor Ballot Drop-Off" in transformed_record["service_options"]
+    hardcoded_record["ballot_indoor"] = "Indoor Ballot Drop-Off" in transformed_record["service_options"]
     hardcoded_record["call_in_advance"] = "Call in advance" in transformed_record["application_process"]
     hardcoded_record["must_show_id"] = "Must show ID" in transformed_record["application_process"]
     hardcoded_record["alameda"] = "Alameda" in transformed_record["service_area"]
@@ -154,6 +159,7 @@ def hardcoded_record(transformed_record):
     hardcoded_record["meal_student"] = transformed_record["taxonomy"] == "School Meals"
     hardcoded_record["free_groceries"] = transformed_record["taxonomy"] == "Groceries" and "Free" in transformed_record["payment_options"]
     hardcoded_record["bob"] = transformed_record["taxonomy"] == "Black-owned Restaurant"
+    hardcoded_record["ballot_drop"] = transformed_record["taxonomy"] == "Ballot Drop Off"
     if transformed_record["opens_at"] and transformed_record["closes_at"]:
         hardcoded_record["mon"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Monday" in transformed_record["weekday"] else ""
         hardcoded_record["tues"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Tuesday" in transformed_record["weekday"] else ""
