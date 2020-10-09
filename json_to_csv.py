@@ -159,7 +159,6 @@ def hardcoded_record(transformed_record):
     hardcoded_record["meal_student"] = transformed_record["taxonomy"] == "School Meals"
     hardcoded_record["free_groceries"] = transformed_record["taxonomy"] == "Groceries" and "Free" in transformed_record["payment_options"]
     hardcoded_record["bob"] = transformed_record["taxonomy"] == "Black-owned Restaurant"
-    hardcoded_record["ballot_drop"] = transformed_record["taxonomy"] == "Ballot Drop Off"
     if transformed_record["opens_at"] and transformed_record["closes_at"]:
         hardcoded_record["mon"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Monday" in transformed_record["weekday"] else ""
         hardcoded_record["tues"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Tuesday" in transformed_record["weekday"] else ""
@@ -193,6 +192,7 @@ def hardcoded_record(transformed_record):
         "Farmer's Market": "grocery",
         "School Meals": "meal",
         "Domestic Violence Resource": "dv_resources",
+        "Ballot Drop Off": "ballot_drop"
     }
     hardcoded_record["resource"] = RESOURCE_DICT.get(transformed_record["taxonomy"], '')
     if transformed_record["taxonomy"] == "Health" and "Mental health care" in transformed_record["med_area"]:
