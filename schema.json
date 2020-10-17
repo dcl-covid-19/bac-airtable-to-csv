@@ -11,8 +11,8 @@
     "zip": "#address.Zip Code",
     "lat": "#locations.latitude",
     "lon": "#locations.longitude",
-    "last_update": "Last updated",
-    "updated_by": "Updated By",
+    "last_update": "Auto-Last updated",
+    "updated_by": "Auto-Last updated by",
 
     "taxonomy": "*taxonomy.name",
     "taxonomy_parent": "taxonomy.parent_name/taxonomy.name",
@@ -33,6 +33,9 @@
     "weekday": "*schedule.weekday",
     "opens_at": "schedule.opens_at",
     "closes_at": "schedule.closes_at",
+    "senior_weekday": "*schedule.senior_weekday",
+    "senior_opens_at": "schedule.senior_opens_at",
+    "senior_closes_at": "schedule.senior_closes_at",
     "add_day": "schedule.add_day",
     "add_hours": "schedule.add_hours"
 }
