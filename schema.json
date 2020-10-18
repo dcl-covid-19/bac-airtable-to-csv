@@ -37,5 +37,6 @@
     "senior_opens_at": "schedule.senior_opens_at",
     "senior_closes_at": "schedule.senior_closes_at",
     "add_day": "schedule.add_day",
-    "add_hours": "schedule.add_hours"
+    "add_hours": "schedule.add_hours",
+    "special_hours": "schedule.special_hours"
 }

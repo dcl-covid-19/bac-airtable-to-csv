@@ -128,6 +128,7 @@ def hardcoded_record(transformed_record):
 
     # else
     hardcoded_record["twentyfourhrs"] = "24 Hours" in transformed_record["opens_at"]
+    hardcoded_record["special_hours"] = "Special hours" in transformed_record["special_hours"]
     hardcoded_record["free"] = "Free" in transformed_record["payment_options"]
     hardcoded_record["sliding_scale"] = "Sliding scale" in transformed_record["payment_options"]
     hardcoded_record["financial_assistance"] = "Financial assistance" in transformed_record["payment_options"]
