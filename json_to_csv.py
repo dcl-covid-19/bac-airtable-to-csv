@@ -128,6 +128,7 @@ def hardcoded_record(transformed_record):
 
     # else
     hardcoded_record["twentyfourhrs"] = "24 Hours" in transformed_record["opens_at"]
+    hardcoded_record["special_hours"] = "Special hours" in transformed_record["special_hours"]
     hardcoded_record["free"] = "Free" in transformed_record["payment_options"]
     hardcoded_record["sliding_scale"] = "Sliding scale" in transformed_record["payment_options"]
     hardcoded_record["financial_assistance"] = "Financial assistance" in transformed_record["payment_options"]
@@ -161,37 +162,37 @@ def hardcoded_record(transformed_record):
     hardcoded_record["free_groceries"] = transformed_record["taxonomy"] == "Groceries" and "Free" in transformed_record["payment_options"]
     hardcoded_record["bob"] = transformed_record["taxonomy"] == "Black-owned Restaurant"
     if transformed_record["opens_at"] and transformed_record["closes_at"]:
-        hardcoded_record["mon"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Monday" in transformed_record["weekday"] else ""
-        hardcoded_record["tues"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Tuesday" in transformed_record["weekday"] else ""
-        hardcoded_record["wed"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Wednesday" in transformed_record["weekday"] else ""
-        hardcoded_record["thr"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Thursday" in transformed_record["weekday"] else ""
-        hardcoded_record["fri"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Friday" in transformed_record["weekday"] else ""
-        hardcoded_record["sat"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Saturday" in transformed_record["weekday"] else ""
-        hardcoded_record["sun"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Sunday" in transformed_record["weekday"] else ""
+        hardcoded_record["mon"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Monday" in transformed_record["weekday"] else "0"
+        hardcoded_record["tues"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Tuesday" in transformed_record["weekday"] else "0"
+        hardcoded_record["wed"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Wednesday" in transformed_record["weekday"] else "0"
+        hardcoded_record["thr"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Thursday" in transformed_record["weekday"] else "0"
+        hardcoded_record["fri"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Friday" in transformed_record["weekday"] else "0"
+        hardcoded_record["sat"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Saturday" in transformed_record["weekday"] else "0"
+        hardcoded_record["sun"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Sunday" in transformed_record["weekday"] else "0"
     else:
-        hardcoded_record["mon"] = None
-        hardcoded_record["tues"] = None
-        hardcoded_record["wed"] = None
-        hardcoded_record["thr"] = None
-        hardcoded_record["fri"] = None
-        hardcoded_record["sat"] = None
-        hardcoded_record["sun"] = None
+        hardcoded_record["mon"] = '0'
+        hardcoded_record["tues"] = '0'
+        hardcoded_record["wed"] = '0'
+        hardcoded_record["thr"] = '0'
+        hardcoded_record["fri"] = '0'
+        hardcoded_record["sat"] = '0'
+        hardcoded_record["sun"] = '0'
     if transformed_record["senior_opens_at"] and transformed_record["senior_closes_at"]:
-        hardcoded_record["sp_mon"] = "{} - {}".format(transformed_record["senior_opens_at"], transformed_record["senior_closes_at"]) if "Monday" in transformed_record["senior_weekday"] else ""
-        hardcoded_record["sp_tues"] = "{} - {}".format(transformed_record["senior_opens_at"], transformed_record["senior_closes_at"]) if "Tuesday" in transformed_record["senior_weekday"] else ""
-        hardcoded_record["sp_wed"] = "{} - {}".format(transformed_record["senior_opens_at"], transformed_record["senior_closes_at"]) if "Wednesday" in transformed_record["senior_weekday"] else ""
-        hardcoded_record["sp_thr"] = "{} - {}".format(transformed_record["senior_opens_at"], transformed_record["senior_closes_at"]) if "Thursday" in transformed_record["senior_weekday"] else ""
-        hardcoded_record["sp_fri"] = "{} - {}".format(transformed_record["senior_opens_at"], transformed_record["senior_closes_at"]) if "Friday" in transformed_record["senior_weekday"] else ""
-        hardcoded_record["sp_sat"] = "{} - {}".format(transformed_record["senior_opens_at"], transformed_record["senior_closes_at"]) if "Saturday" in transformed_record["senior_weekday"] else ""
-        hardcoded_record["sp_sun"] = "{} - {}".format(transformed_record["senior_opens_at"], transformed_record["senior_closes_at"]) if "Sunday" in transformed_record["senior_weekday"] else ""
+        hardcoded_record["sp_mon"] = "{} - {}".format(transformed_record["senior_opens_at"], transformed_record["senior_closes_at"]) if "Monday" in transformed_record["senior_weekday"] else "0"
+        hardcoded_record["sp_tues"] = "{} - {}".format(transformed_record["senior_opens_at"], transformed_record["senior_closes_at"]) if "Tuesday" in transformed_record["senior_weekday"] else "0"
+        hardcoded_record["sp_wed"] = "{} - {}".format(transformed_record["senior_opens_at"], transformed_record["senior_closes_at"]) if "Wednesday" in transformed_record["senior_weekday"] else "0"
+        hardcoded_record["sp_thr"] = "{} - {}".format(transformed_record["senior_opens_at"], transformed_record["senior_closes_at"]) if "Thursday" in transformed_record["senior_weekday"] else "0"
+        hardcoded_record["sp_fri"] = "{} - {}".format(transformed_record["senior_opens_at"], transformed_record["senior_closes_at"]) if "Friday" in transformed_record["senior_weekday"] else "0"
+        hardcoded_record["sp_sat"] = "{} - {}".format(transformed_record["senior_opens_at"], transformed_record["senior_closes_at"]) if "Saturday" in transformed_record["senior_weekday"] else "0"
+        hardcoded_record["sp_sun"] = "{} - {}".format(transformed_record["senior_opens_at"], transformed_record["senior_closes_at"]) if "Sunday" in transformed_record["senior_weekday"] else "0"
     else:
-        hardcoded_record["sp_mon"] = None
-        hardcoded_record["sp_tues"] = None
-        hardcoded_record["sp_wed"] = None
-        hardcoded_record["sp_thr"] = None
-        hardcoded_record["sp_fri"] = None
-        hardcoded_record["sp_sat"] = None
-        hardcoded_record["sp_sun"] = None
+        hardcoded_record["sp_mon"] = '0'
+        hardcoded_record["sp_tues"] = '0'
+        hardcoded_record["sp_wed"] = '0'
+        hardcoded_record["sp_thr"] = '0'
+        hardcoded_record["sp_fri"] = '0'
+        hardcoded_record["sp_sat"] = '0'
+        hardcoded_record["sp_sun"] = '0'
     if transformed_record["add_hours"]:
         if transformed_record["add_day"] == "Monday":
             hardcoded_record["mon"] += (", " if hardcoded_record["mon"] else '') + transformed_record["add_hours"]
