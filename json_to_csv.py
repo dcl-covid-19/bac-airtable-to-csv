@@ -161,7 +161,7 @@ def hardcoded_record(transformed_record):
     hardcoded_record["meal_student"] = transformed_record["taxonomy"] == "School Meals"
     hardcoded_record["free_groceries"] = transformed_record["taxonomy"] == "Groceries" and "Free" in transformed_record["payment_options"]
     hardcoded_record["bob"] = transformed_record["taxonomy"] == "Black-owned Restaurant"
-    if transformed_record["opens_at"] and transformed_record["closes_at"]:
+    if transformed_record["opens_at"] or transformed_record["closes_at"]:
         hardcoded_record["mon"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Monday" in transformed_record["weekday"] else "0"
         hardcoded_record["tues"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Tuesday" in transformed_record["weekday"] else "0"
         hardcoded_record["wed"] = "{} - {}".format(transformed_record["opens_at"], transformed_record["closes_at"]) if "Wednesday" in transformed_record["weekday"] else "0"
@@ -177,7 +177,7 @@ def hardcoded_record(transformed_record):
         hardcoded_record["fri"] = '0'
         hardcoded_record["sat"] = '0'
         hardcoded_record["sun"] = '0'
-    if transformed_record["senior_opens_at"] and transformed_record["senior_closes_at"]:
+    if transformed_record["senior_opens_at"] or transformed_record["senior_closes_at"]:
         hardcoded_record["sp_mon"] = "{} - {}".format(transformed_record["senior_opens_at"], transformed_record["senior_closes_at"]) if "Monday" in transformed_record["senior_weekday"] else "0"
         hardcoded_record["sp_tues"] = "{} - {}".format(transformed_record["senior_opens_at"], transformed_record["senior_closes_at"]) if "Tuesday" in transformed_record["senior_weekday"] else "0"
         hardcoded_record["sp_wed"] = "{} - {}".format(transformed_record["senior_opens_at"], transformed_record["senior_closes_at"]) if "Wednesday" in transformed_record["senior_weekday"] else "0"
@@ -260,7 +260,6 @@ def write_csv(transformed_records, schema, filename):
         writer.writeheader()
         for record in transformed_records:
             writer.writerow(record)
-
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Convert JSON data from airtable_to_json.py to CSV')
