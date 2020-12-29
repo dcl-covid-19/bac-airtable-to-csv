@@ -194,19 +194,19 @@ def hardcoded_record(transformed_record):
         hardcoded_record["sp_sat"] = '0'
         hardcoded_record["sp_sun"] = '0'
     if transformed_record["add_hours"]:
-        if transformed_record["add_day"] == "Monday":
+        if "Monday" in transformed_record["add_day"]:
             hardcoded_record["mon"] += (", " if hardcoded_record["mon"] else '') + transformed_record["add_hours"]
-        if transformed_record["add_day"] == "Tuesday":
+        if "Tuesday" in transformed_record["add_day"]:
             hardcoded_record["tues"] += (", " if hardcoded_record["tues"] else '') + transformed_record["add_hours"]
-        if transformed_record["add_day"] == "Wednesday":
+        if "Wednesday" in transformed_record["add_day"]:
             hardcoded_record["wed"] += (", " if hardcoded_record["wed"] else '') + transformed_record["add_hours"]
-        if transformed_record["add_day"] == "Thursday":
+        if "Thursday" in transformed_record["add_day"]:
             hardcoded_record["thr"] += (", " if hardcoded_record["thr"] else '') + transformed_record["add_hours"]
-        if transformed_record["add_day"] == "Friday":
+        if "Friday" in transformed_record["add_day"]:
             hardcoded_record["fri"] += (", " if hardcoded_record["fri"] else '') + transformed_record["add_hours"]
-        if transformed_record["add_day"] == "Saturday":
+        if "Saturday" in transformed_record["add_day"]:
             hardcoded_record["sat"] += (", " if hardcoded_record["sat"] else '') + transformed_record["add_hours"]
-        if transformed_record["add_day"] == "Sunday":
+        if "Sunday" in transformed_record["add_day"]:
             hardcoded_record["sun"] += (", " if hardcoded_record["sun"] else '') + transformed_record["add_hours"]
     RESOURCE_DICT = {
         "Black-owned Restaurant": "restaurant",
